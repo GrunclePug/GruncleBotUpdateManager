@@ -61,6 +61,8 @@ public class JarUtil {
         process = null;
         System.out.println("[Update Manager] Update Complete");
         Driver.jda.getTextChannelById(Config.getBotUpdateChannel()).sendMessage("```[Update Manager] Update Complete```").queue();
+        Driver.jda.getTextChannelById(Config.getBotUpdateChannel()).sendMessage("```fix\nBOT STARTING..\n```").queue();
         executeJar();
+        Driver.jda.getTextChannelById(Config.getBotUpdateChannel()).sendMessage("```diff\n+ BOT ONLINE\n```").queue();
     }
 }
