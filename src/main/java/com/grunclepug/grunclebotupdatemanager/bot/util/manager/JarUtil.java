@@ -43,20 +43,24 @@ public class JarUtil {
      */
     public static void updateJar() throws IOException, InterruptedException {
         System.out.println("[Update Manager] Shutting down GruncleBot..");
+        Driver.jda.getTextChannelById(Config.getBotUpdateChannel()).sendMessage("```[Update Manager] Shutting down GruncleBot..```").queue();
         Driver.jda.getTextChannelById(Config.getBotLogChannel()).sendMessage(Config.getPrefix() + "stop").queue();
         Thread.sleep(500);
 
         System.out.println("[Update Manager] Pulling update from GitHub..");
+        Driver.jda.getTextChannelById(Config.getBotUpdateChannel()).sendMessage("```[Update Manager] Pulling update from GitHub..```").queue();
         process = Runtime.getRuntime().exec("git pull", null, new File(Config.getBotAbsolutePath()));
         process.waitFor();
 
         System.out.println("[Update Manager] Building Gradle project..");
+        Driver.jda.getTextChannelById(Config.getBotUpdateChannel()).sendMessage("```[Update Manager] Building Gradle project..```").queue();
         process = Runtime.getRuntime().exec("gradle build", null, new File(Config.getBotAbsolutePath()));
         process.waitFor();
 
         process.destroyForcibly();
         process = null;
         System.out.println("[Update Manager] Update Complete");
+        Driver.jda.getTextChannelById(Config.getBotUpdateChannel()).sendMessage("```[Update Manager] Update Complete```").queue();
         executeJar();
     }
 }
