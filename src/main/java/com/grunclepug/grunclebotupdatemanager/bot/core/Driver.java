@@ -37,7 +37,7 @@ public class Driver {
      * @throws LoginException issue logging in
      * @throws IOException issue reading config file
      */
-    private void setup() throws LoginException, IOException {
+    private void setup() throws LoginException, IOException, InterruptedException {
         Config.readFile();
 
         jda = JDABuilder.createDefault(Config.getToken()).build();
@@ -53,8 +53,12 @@ public class Driver {
         jda.addEventListener(new Restart());
         jda.addEventListener(new Update());
         jda.addEventListener(new Stop());
-        
-        // Start GruncleBot
-        jda.getTextChannelById(Config.getBotUpdateChannel()).sendMessage(Config.getPrefix() + "start").queue();
+
+        startBot();
+    }
+
+    private void startBot() throws InterruptedException {
+        jda.awaitReady();
+        jda.getTextChannelById(Config.getBotLogChannel()).sendMessage(Config.getPrefix() + "start").queue();
     }
 }
