@@ -1,7 +1,7 @@
 package com.grunclepug.grunclebotupdatemanager.bot.commands;
 
 import com.grunclepug.grunclebotupdatemanager.bot.core.Config;
-import com.grunclepug.grunclebot.bot.core.Driver;
+import com.grunclepug.grunclebotupdatemanager.bot.core.Driver;
 import com.grunclepug.grunclebotupdatemanager.bot.util.log.BotLog;
 import com.grunclepug.grunclebotupdatemanager.bot.util.manager.JarUtil;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
