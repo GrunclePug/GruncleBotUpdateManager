@@ -53,5 +53,8 @@ public class Driver {
         jda.addEventListener(new Restart());
         jda.addEventListener(new Update());
         jda.addEventListener(new Stop());
+        
+        // Start GruncleBot
+        jda.getTextChannelById(Config.getBotUpdateChannel()).sendMessage(Config.getPrefix() + "start").queue();
     }
 }
